@@ -51,21 +51,28 @@ class App extends Component {
     if(this.state.showPersons)
     {
       personww = (
+        // <div>
+        //     <button 
+        //       style={style}
+        //       onClick={() => this.switchNameHandler('Abhinav Mishra')}>Switch</button>
+        //     <Person 
+        //       name={this.state.persons[0].name} 
+        //       age={this.state.persons[0].age}
+        //       changed={this.nameChangedHandler}/>
+        //     <Person 
+        //       name={this.state.persons[1].name} 
+        //       age={this.state.persons[1].age}
+        //       click={this.switchNameHandler.bind(this,'Abhinav Mishra!@!@!')}>
+        //         My hobby : Playing guitar
+        //     </Person>
+        //   </div>
         <div>
-            <button 
-              style={style}
-              onClick={() => this.switchNameHandler('Abhinav Mishra')}>Switch</button>
-            <Person 
-              name={this.state.persons[0].name} 
-              age={this.state.persons[0].age}
-              changed={this.nameChangedHandler}/>
-            <Person 
-              name={this.state.persons[1].name} 
-              age={this.state.persons[1].age}
-              click={this.switchNameHandler.bind(this,'Abhinav Mishra!@!@!')}>
-                My hobby : Playing guitar
-            </Person>
-          </div>
+          {this.state.persons.map(personas => {
+            return <Person
+              name={personas.name}
+              age={personas.age}/>
+          })}
+        </div>
       )
     }
 
