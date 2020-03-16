@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
   state = {
     persons: [
       {id: 'sgbd', name: 'Abhinav', age: 20},
-      {id: 'rjyg', name: 'Sasha', age: 20}
+      {id: 'rjyg', name: 'Sasha', age: 20},
+      {id: 'uygf', name: 'Killua', age: 19}
     ],
     showPersons: false
   }
@@ -53,7 +55,11 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      margin: '10px'
+      margin: '10px',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
 
     let personww = null;
@@ -88,11 +94,23 @@ class App extends Component {
         </div>
       )
       style.backgroundColor = 'red';
+      style[':hover']= {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
+    }
+    const classes = []
+    if(this.state.persons.length <= 2) {
+      classes.push('red')
+    }
+    if(this.state.persons.length <=1) {
+      classes.push('bold')
     }
 
     return (
      <div className="App">
        <h1>"Hi, I am react app.."</h1>
+       <p className={classes.join(' ')}>Works</p>
        <button 
         style={style}
         onClick={this.togglePersonsHandler}>Disp</button>
@@ -103,7 +121,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
 
 //  //using hooksXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
