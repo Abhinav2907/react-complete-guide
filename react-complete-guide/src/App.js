@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -108,14 +108,16 @@ class App extends Component {
     }
 
     return (
-     <div className="App">
-       <h1>"Hi, I am react app.."</h1>
-       <p className={classes.join(' ')}>Works</p>
-       <button 
-        style={style}
-        onClick={this.togglePersonsHandler}>Disp</button>
-       {personww}
-     </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>"Hi, I am react app.."</h1>
+          <p className={classes.join(' ')}>Works</p>
+          <button 
+            style={style}
+            onClick={this.togglePersonsHandler}>Disp</button>
+          {personww}
+        </div>
+      </StyleRoot>
     );//can also use ternary operator as we can only write a single statement in jsx block. Module 4 vid 3
     //return React.createElement('div',{className: 'App'}, React.createElement('h1',null,'HI i am react app!!!'));
   }
