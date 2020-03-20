@@ -47,17 +47,9 @@ class App extends Component {
 
 //more effecient using bind
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      margin: '10px'
-    };
 
     let personww = null;
+    let btnClass = '';
 
     if(this.state.showPersons)
     {
@@ -88,7 +80,7 @@ class App extends Component {
           })}
         </div>
       )
-      style.backgroundColor = 'red';
+      btnClass = classes.Red;
     }
     const assignedClasses = []
     if(this.state.persons.length <= 2) {
@@ -103,7 +95,7 @@ class App extends Component {
           <h1>"Hi, I am react app.."</h1>
           <p className={assignedClasses.join(' ')}>Works</p>
           <button 
-            style={style}
+            className={btnClass}
             onClick={this.togglePersonsHandler}>Disp</button>
           {personww}
         </div>
