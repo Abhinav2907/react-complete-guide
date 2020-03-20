@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react';
 import './App.css';
-import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -55,11 +54,7 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      margin: '10px',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      margin: '10px'
     };
 
     let personww = null;
@@ -94,10 +89,6 @@ class App extends Component {
         </div>
       )
       style.backgroundColor = 'red';
-      style[':hover']= {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
     }
     const classes = []
     if(this.state.persons.length <= 2) {
@@ -108,7 +99,6 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
         <div className="App">
           <h1>"Hi, I am react app.."</h1>
           <p className={classes.join(' ')}>Works</p>
@@ -117,13 +107,12 @@ class App extends Component {
             onClick={this.togglePersonsHandler}>Disp</button>
           {personww}
         </div>
-      </StyleRoot>
     );//can also use ternary operator as we can only write a single statement in jsx block. Module 4 vid 3
     //return React.createElement('div',{className: 'App'}, React.createElement('h1',null,'HI i am react app!!!'));
   }
 }
 
-export default Radium(App);
+export default App;
 
 //  //using hooksXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
