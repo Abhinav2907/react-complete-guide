@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import React, { useState } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -49,51 +50,25 @@ class App extends Component {
   render() {
 
     let personww = null;
-    let btnClass = '';
-
+    
     if(this.state.showPersons)
     {
-      personww = (
-        // <div>
-        //     <button 
-        //       style={style}
-        //       onClick={() => this.switchNameHandler('Abhinav Mishra')}>Switch</button>
-        //     <Person 
-        //       name={this.state.persons[0].name} 
-        //       age={this.state.persons[0].age}
-        //       changed={this.nameChangedHandler}/>
-        //     <Person 
-        //       name={this.state.persons[1].name} 
-        //       age={this.state.persons[1].age}
-        //       click={this.switchNameHandler.bind(this,'Abhinav Mishra!@!@!')}>
-        //         My hobby : Playing guitar
-        //     </Person>
-        //   </div>
-        <div>
-          <Persons 
+      personww = <Persons 
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
-          />
-        </div>
-      )
-      btnClass = classes.Red;
+          />;
+      
+      
     }
-    const assignedClasses = []
-    if(this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red)
-    }
-    if(this.state.persons.length <=1) {
-      assignedClasses.push(classes.bold)
-    }
+    
 
     return (
         <div className={classes.App}>
-          <h1>"Hi, I am react app.."</h1>
-          <p className={assignedClasses.join(' ')}>Works</p>
-          <button 
-            className={btnClass}
-            onClick={this.togglePersonsHandler}>Disp</button>
+          <Cockpit 
+            showPersons={this.state.showPersons} 
+            persons={this.state.persons}
+            clicked={this.togglePersonsHandler} />
           {personww}
         </div>
     );//can also use ternary operator as we can only write a single statement in jsx block. Module 4 vid 3
