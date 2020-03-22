@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react';
 import classes from './App.css';
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons';
 
 class App extends Component {
   state = {
@@ -70,14 +70,11 @@ class App extends Component {
         //     </Person>
         //   </div>
         <div>
-          {this.state.persons.map((personas,index) => {
-            return <Person
-              click={() => this.deletePersonHandler(index)}
-              name={personas.name}
-              age={personas.age}
-              key={personas.id}
-              changed={(event) => this.nameChangedHandler(event, personas.id)} />
-          })}
+          <Persons 
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+          />
         </div>
       )
       btnClass = classes.Red;
