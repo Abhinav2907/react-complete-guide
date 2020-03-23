@@ -11,7 +11,8 @@ class App extends Component {
       {id: 'rjyg', name: 'Sasha', age: 20},
       {id: 'uygf', name: 'Killua', age: 19}
     ],
-    showPersons: false
+    showPersons: false,
+    counter: 0
   }
 
   switchNameHandler = (newName) => {
@@ -31,7 +32,13 @@ class App extends Component {
     person.name = event.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    this.setState({persons: persons})
+    //this.setState({persons: persons})//this does not guarantee sequence synchronicity
+    this.setState((prevstate, props) => {
+      return {
+        persons: persons,
+        counter: prevstate.counter + 1
+      };
+    });
   }
 
   togglePersonsHandler = () => {
@@ -66,8 +73,9 @@ class App extends Component {
     return (
         <div className={classes.App}>
           <Cockpit 
+            title={this.props.appTitle}
             showPersons={this.state.showPersons} 
-            persons={this.state.persons}
+            personsLength={this.state.persons.length}
             clicked={this.togglePersonsHandler} />
           {personww}
         </div>
