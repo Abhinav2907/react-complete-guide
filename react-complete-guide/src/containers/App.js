@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import AuthContext from '../context/auth-context'
 
 class App extends Component {
   state = {
@@ -12,7 +13,12 @@ class App extends Component {
       {id: 'uygf', name: 'Killua', age: 19}
     ],
     showPersons: false,
-    counter: 0
+    counter: 0,
+    authenticated: false
+  }
+
+  loginHandler = () => {
+    this.setState({authenticated: true});
   }
 
   switchNameHandler = (newName) => {
@@ -64,6 +70,7 @@ class App extends Component {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
+          isAuthenticated={this.state.authenticated}
           />;
       
       
@@ -72,12 +79,19 @@ class App extends Component {
 
     return (
         <div className={classes.App}>
-          <Cockpit 
-            title={this.props.appTitle}
-            showPersons={this.state.showPersons} 
-            personsLength={this.state.persons.length}
-            clicked={this.togglePersonsHandler} />
-          {personww}
+          <AuthContext.Provider 
+            value={{
+              authenticated: this.state.authenticated, 
+              login: this.loginHandler
+              }}
+          >
+            <Cockpit 
+              title={this.props.appTitle}
+              showPersons={this.state.showPersons} 
+              personsLength={this.state.persons.length}
+              clicked={this.togglePersonsHandler}/>
+            {personww}
+          </AuthContext.Provider>
         </div>
     );//can also use ternary operator as we can only write a single statement in jsx block. Module 4 vid 3
     //return React.createElement('div',{className: 'App'}, React.createElement('h1',null,'HI i am react app!!!'));
