@@ -81,7 +81,7 @@
   }
   
 
-.AalooPatty {
+.Meat {
     width: 80%;
     height: 8%;
     background: linear-gradient(#7f3608, #702e05);
@@ -105,16 +105,33 @@
     border-radius: 20px;
 }
 
-.Mustard {
+.Bacon {
     width: 80%;
     height: 3%;
-    background: linear-gradient(#bf7413, #ffa601);
+    background: linear-gradient(#bf3813, #c45e38);
     margin: 2% auto;
 }
 
 .Mayonaisse {
-    width: 80%;
-    height: 2%;
-    background: linear-gradient(#ffffff, #f8e9cd);
-    margin: 2% auto;
+  width: 82%;
+  height: 2.5%;
+  margin: 2% auto;
+  background: linear-gradient(#fcf4d4, #f3eab6);
+  border-radius: 20px;
+}
+
+.Aaloopatty {
+  width: 80%;
+  height: 8.5%;
+  background: linear-gradient(#c58308, #694801);
+  margin: 2% auto;
+  border-radius: 15px;
+}
+
+.Mustard {
+  width: 80%;
+  height: 2.5%;
+  margin: 2% auto;
+  background: linear-gradient(#d3ad13, #b19704e0);
+  border-radius: 20px;
 }
